@@ -8,10 +8,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>Web水族館プロトプログラム</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
+	<pre>${mybean}</pre>
+		<c:url value="/hello" var="messageUrl" />
 		<a href="${messageUrl}">Click to enter</a>
+		
+		<form action="sample" method="post">
+			<input type="text" id ="message" name="message">
+			<input type="submit" value="add">
+		</form>
 	</body>
 </html>

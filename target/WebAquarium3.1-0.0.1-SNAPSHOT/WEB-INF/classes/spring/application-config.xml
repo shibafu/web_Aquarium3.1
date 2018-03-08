@@ -7,5 +7,8 @@
     
     <!-- Uncomment and add your base-package here:-->
 
+	<context:component-scan base-package="com.TsugaruInfo" />
+	
+	<bean id = "mybean1" class="com.TsugaruInfo.bean.MyBean" />
 
 </beans>

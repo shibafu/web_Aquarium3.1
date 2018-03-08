@@ -25,6 +25,16 @@
 </properties>
 	<dependencies>
 	
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+	
 		<!-- SpringMVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -46,16 +56,6 @@
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-			
-		<!-- Spring and Transactions -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-		</dependency>
 
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
@@ -75,6 +75,23 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 
+		<!-- jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		
+		<!-- h2 database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		
+		<!-- postgresql database -->
+		<dependency>
+   			 <groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    	</dependency>
 		
 		<!-- Test Artifacts -->
 		<dependency>
