@@ -69,6 +69,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- lombok -->
+		<dependency>
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+    		<scope>provided</scope>
+		</dependency>
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -89,9 +96,21 @@
 		
 		<!-- postgresql database -->
 		<dependency>
-   			 <groupId>org.postgresql</groupId>
+   			<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
     	</dependency>
+    	
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		
+		<!-- Spring ORM -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
 		
 		<!-- Test Artifacts -->
 		<dependency>

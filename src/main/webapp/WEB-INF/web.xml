@@ -36,6 +36,9 @@
 		<param-value>com.TsugaruInfo.config</param-value>
 	</context-param>
 
+    <!--
+		- Servlet that dispatches request to registered handlers (Controller implementations).
+	-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -48,6 +51,7 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
