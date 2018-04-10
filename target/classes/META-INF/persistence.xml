@@ -9,7 +9,11 @@
 		
 		<!-- HibernatePersistance定義 -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<!-- class>com.tsugaruinfo.model.Mypersonaldata</class-->
+		<class>com.TsugaruInfo.entity.Author</class>
+		<class>com.TsugaruInfo.entity.NewsArticleMaster</class>
+		<class>com.TsugaruInfo.entity.NewsCompany</class>
+		<class>com.TsugaruInfo.entity.PictureMaster</class>
+		<class>com.TsugaruInfo.entity.UserMaster</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
