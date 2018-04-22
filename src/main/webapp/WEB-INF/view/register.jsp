@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+
+<%@ page import="com.TsugaruInfo.*" %> 
 <head>
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -14,7 +19,9 @@
 
 <body>
 
-<form action="" method="post" style="height: 387px">
+<spring:url value="/register/confirm" var="action" />
+<form:form modelAttribute="RegisterForm" action="${action}">
+
 	<div class="auto-style1">
 		ユーザー登録フォーム<br />
 		<br />
@@ -22,19 +29,20 @@
 		<br />
 		<br />
 		ユーザー名<br />
-		<input name="Text1" style="width: 210px" type="text" /><br />
+		<form:input path="username" style="width: 210px" />
 		<br />
 		E-mail<br />
-		<input name="Text2" style="width: 201px" type="text" /><br />
+		<form:input path="email" style="width: 210px" />
 		<br />
 		パスワード<br />
-		<input name="Password1" style="width: 195px" type="password" /><br />
+		<form:password path="password" style="width: 210px" />
 		<br />
 		パスワード（確認）<br />
-		<input name="Password2" style="width: 196px" type="password" /><br />
+		<form:password path="passwordConfirm" style="width: 210px" /><br />
 		<br />
+		<input type="submit" value="登録！" />
 	</div>
-</form>
+</form:form>
 
 </body>
 

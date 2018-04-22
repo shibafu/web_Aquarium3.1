@@ -19,6 +19,8 @@ public class UserMaster implements Serializable {
 
 	@Id
 	@Column(name="user_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userid_seq")
+    @SequenceGenerator(name = "userid_seq", sequenceName = "userid_seq", allocationSize = 1)
 	private Integer userId;
 
 	private String email;

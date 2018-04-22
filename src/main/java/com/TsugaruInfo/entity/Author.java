@@ -19,6 +19,9 @@ public class Author implements Serializable {
 
 	@Id
 	@Column(name="author_id")
+
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorid_seq")
+    @SequenceGenerator(name = "authorid_seq", sequenceName = "authorid_seq", allocationSize = 1)
 	private Integer authorId;
 
 	@Column(name="author_name")

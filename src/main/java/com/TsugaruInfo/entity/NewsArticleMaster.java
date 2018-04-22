@@ -21,6 +21,9 @@ public class NewsArticleMaster implements Serializable {
 
 	@Id
 	@Column(name="article_id")
+
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "articleid_seq")
+    @SequenceGenerator(name = "articleid_seq", sequenceName = "articleid_seq", allocationSize = 1)
 	private Integer articleId;
 
 	@Column(name="article_header")

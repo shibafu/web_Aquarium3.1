@@ -14,9 +14,12 @@
     
     <!-- Uncomment and add your base-package here:-->
 
-     <context:property-placeholder location="classpath:database.properties" />
+    <context:property-placeholder
+    	location="classpath:database.properties,
+    classpath:message.properties
+     " />
 
-     <context:annotation-config />
+    <context:annotation-config />
      <context:component-scan base-package="com.TsugaruInfo.*"></context:component-scan>
      <!-- 組み込みデータベース用の設定>
 	<jdbc:embedded-database id="dataSource" type="H2">
@@ -63,4 +66,6 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
     
+    <!-- 宣言的トランザクション開始 -->
+    <tx:annotation-driven/>
 </beans>

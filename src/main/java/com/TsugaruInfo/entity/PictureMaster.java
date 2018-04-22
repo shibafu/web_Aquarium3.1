@@ -19,6 +19,8 @@ public class PictureMaster implements Serializable {
 
 	@Id
 	@Column(name="picture_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pictid_seq")
+    @SequenceGenerator(name = "pictid_seq", sequenceName = "pictid_seq", allocationSize = 1)
 	private Long pictureId;
 
 	private String name;
