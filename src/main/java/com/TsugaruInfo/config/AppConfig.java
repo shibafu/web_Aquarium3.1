@@ -14,9 +14,6 @@ import com.TsugaruInfo.service.UserServiceImpl;
 
 @Configuration
 public class AppConfig {
-	@Autowired
-	UserMasterRepository userMasterRepository;
-	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

@@ -30,6 +30,8 @@ public class UserMaster implements Serializable {
 	private String password;
 
 	private String username;
+	
+	private String role;
 
 	public UserMaster() {
 	}

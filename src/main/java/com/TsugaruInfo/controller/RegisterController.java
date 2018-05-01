@@ -60,6 +60,7 @@ public class RegisterController {
 		res.setUsername(registerForm.getUsername());
 		res.setPassword(registerForm.getPassword());
 		res.setEmail(registerForm.getEmail());
+		res.setRole("ROLE_USER");
 		res.setEnabled(true);
 		
 		//入力チェック
@@ -87,12 +88,20 @@ public class RegisterController {
 			Model model){
 		ModelAndView mv = new ModelAndView("register_complete");
 		
+
+		
 		//登録ユーザー情報をセット
 		UserMaster res = new UserMaster();
 		res.setUsername(registerForm.getUsername());
 		res.setPassword(registerForm.getPassword());
 		res.setEmail(registerForm.getEmail());
+		res.setRole("ROLE_USER");
 		res.setEnabled(true);
+		
+		//入力チェック
+		if(uService.judgeRegisterdUser(res) == 1) {
+			return new ModelAndView("register_complete");
+		}
 		
 		uService.register(res);
 		

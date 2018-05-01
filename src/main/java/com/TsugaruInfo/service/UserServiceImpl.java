@@ -14,15 +14,12 @@ import com.TsugaruInfo.repository.UserMasterRepository;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMasterRepository userMasterRepositry;
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	//既登録しているユーザーか、判定結果
 	private final static int REGISTERD_USER_FAILED = 1;
 	private final static int REGISTERD_USER_SUCSEED = 0;
-
-	public UserServiceImpl(BCryptPasswordEncoder passwordEncoder) {
-		this.passwordEncoder = passwordEncoder;
-	}
 
 	/*
 	 * ユーザーを登録する
@@ -48,6 +45,30 @@ public class UserServiceImpl implements UserService {
 		// TODO 自動生成されたメソッド・スタブ
 		return userMasterRepositry.findByUsernameLike(username);
 	}
+	
+	/*
+	 * ユーザー名完全一致検索
+	 * (非 Javadoc)
+	 * @see com.TsugaruInfo.service.UserService#refferenceByName(java.lang.String)
+	 */
+	@Override
+	public UserMaster searchByUsername(String username) {
+		// TODO 自動生成されたメソッド・スタブ
+		return userMasterRepositry.findByEmail(username);
+	}
+	
+	/*
+	 * E-メールを完全一意検索
+	 * (非 Javadoc)
+	 * @see com.TsugaruInfo.service.UserService#refferenceByName(java.lang.String)
+	 */
+	@Override
+	public UserMaster searchByEmail(String email) {
+		// TODO 自動生成されたメソッド・スタブ
+		return userMasterRepositry.findByEmail(email);
+	}
+	
+
 
 	/*
 	 * 既に登録されているユーザー化チェックする

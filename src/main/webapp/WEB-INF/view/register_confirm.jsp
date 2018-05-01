@@ -32,12 +32,13 @@
 <p class="auto-style1">パスワード</p>
 <p class="auto-style1"><c:out value="${dummyDisplay.password}" /></p>
 <p class="auto-style1">
-<form method="post">
+<spring:url value="/register/complete" var="action" />
+<form:form action="${action}">
 	<div class="auto-style1">
 		<p class="auto-style2">
 		<input class="auto-style3" name="submit" style="width: 142px" type="submit" value="登録！くコ:彡" /></p>
 	</div>
-</form>
+</form:form>
 
 </body>
 
