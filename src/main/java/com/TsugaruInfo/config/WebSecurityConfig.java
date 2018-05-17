@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//セキュリティで管理されたページの設定
 		http
 			.authorizeRequests()	
-			.anyRequest().authenticated()
+			.antMatchers("/adminproc/*").authenticated()
 			.and()
 			
 				.formLogin()
