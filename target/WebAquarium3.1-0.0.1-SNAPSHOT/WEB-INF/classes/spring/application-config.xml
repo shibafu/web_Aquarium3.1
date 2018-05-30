@@ -14,9 +14,12 @@
     
     <!-- Uncomment and add your base-package here:-->
 
-     <context:property-placeholder location="classpath:database.properties" />
+    <context:property-placeholder
+    	location="classpath:database.properties,
+    classpath:message.properties
+     " />
 
-     <context:annotation-config />
+    <context:annotation-config />
      <context:component-scan base-package="com.TsugaruInfo.*"></context:component-scan>
      <!-- 組み込みデータベース用の設定>
 	<jdbc:embedded-database id="dataSource" type="H2">
@@ -56,11 +59,13 @@
 	</bean>
 	
 		<!-- JPA Repository 設定 -->
-	<jpa:repositories base-package="com.tsugaruinfo.repository" />
+	<jpa:repositories base-package="com.TsugaruInfo.repository" />
 	
      <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
         <property name="dataSource" ref="dataSource" />
     </bean>
-
+    
+    <!-- 宣言的トランザクション開始 -->
+    <tx:annotation-driven/>
 </beans>
