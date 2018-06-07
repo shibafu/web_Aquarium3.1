@@ -65,6 +65,16 @@ public class LoginUserDetails implements UserDetails {
 		return user.getEnabled();
 	}
 	
+	public Integer getUserId(){
+		// TODO 自動生成されたメソッド・スタブ
+		return user.getUserId();
+	}
+	
+	public String getRole() {
+		// TODO 自動生成されたメソッド・スタブ
+		return user.getRole();
+	}
+	
 	public String getEmail() {
 		// TODO 自動生成されたメソッド・スタブ
 		return user.getEmail();

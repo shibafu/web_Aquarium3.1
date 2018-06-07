@@ -1,4 +1,4 @@
-package com.TsugaruInfo.controller;
+package com.TsugaruInfo.restcontroller;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.client.Client;

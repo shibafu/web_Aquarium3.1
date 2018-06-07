@@ -29,9 +29,19 @@ public class PictureMaster implements Serializable {
 	@Column(name="picture_name")
 	private String pictureName;
 
+	@Column(name="original_name")
+	private String originalName;
+
 	@Column(name="picture_data")
 	private byte[] pictureData;
 
+	@Column(name="extension")
+	private String extension;
+	
+	@Column(name="base64string")
+	private String base64string;
+	
+	
 	public PictureMaster() {
 	}
 }
