@@ -24,7 +24,7 @@ public class PasswordConfirmValidationImpl
 		this.comparingProperty = constraintsAnnotation.comparingProperty();
 		//プロパティファイルからメッセージを取得
 		ResourceBundle resources = ResourceBundle.getBundle("message");
-		this.message = resources.getString("messsage.error.passwordconfirm");
+		this.message = resources.getString("messsage.error.PasswordAndConfimationIsDiffernt");
 	}
 
 	@Override

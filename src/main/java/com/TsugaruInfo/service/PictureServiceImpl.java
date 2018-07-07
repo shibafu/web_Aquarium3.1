@@ -1,6 +1,7 @@
 package com.TsugaruInfo.service;
 
 import java.util.List;
+import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public  class PictureServiceImpl implements PictureService {
 	 * 画像を登録する。
 	 */
 	@Override
-	public int addPicture(byte[] picturedata, String pictureName, String originalName, Integer uploadUserId) {
+	public Long addPicture(byte[] picturedata, String pictureName, String originalName, Integer uploadUserId) {
 		// TODO 自動生成されたメソッド・スタブ
 		PictureMaster input = new PictureMaster();
 		
@@ -29,7 +30,20 @@ public  class PictureServiceImpl implements PictureService {
 		
 		pRepository.saveAndFlush(input);
 		
-		return 0;
+		return input.getPictureId();
+	}
+	
+	/**
+	 * 画像を登録する(API)
+	 */
+	@Override
+	public Long addPicture(PictureMaster pictureMaster) {
+		// TODO 自動生成されたメソッド・スタブ
+		pictureMaster.setPictureData(Base64.getDecoder().decode(pictureMaster.getBase64string()));
+		
+		pRepository.saveAndFlush(pictureMaster);
+		
+		return pictureMaster.getPictureId();
 	}
 
 	/**

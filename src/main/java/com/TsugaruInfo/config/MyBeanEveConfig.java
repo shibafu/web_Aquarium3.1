@@ -6,9 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.TsugaruInfo.bean.MyBeanEve;
-import com.TsugaruInfo.sample1.MyBeanEventListener;
-import com.TsugaruInfo.sample1.MyBeanEventService;
-import com.TsugaruInfo.sample1.MySampleApplicationListener;
+import com.TsugaruInfo.event.MyBeanEventListener;
+import com.TsugaruInfo.event.MyBeanEventService;
+import com.TsugaruInfo.event.MySampleApplicationListener;
 
 @Configuration
 @ComponentScan(basePackages = "com.TsugaruInfo.bean")

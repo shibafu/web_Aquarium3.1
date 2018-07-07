@@ -57,6 +57,18 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+  <!-- サブドメイン用のフィルター -->
+  <filter>
+		<filter-name>subDomainFilter</filter-name>
+		<filter-class>com.TsugaruInfo.config.SubDomainFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>subDomainFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
 
     <!--
 		- Servlet that dispatches request to registered handlers (Controller implementations).
@@ -84,4 +96,5 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   
+
 </web-app>

@@ -1,4 +1,4 @@
-package com.TsugaruInfo.sample1;
+package com.TsugaruInfo.event;
 
 import org.springframework.context.ApplicationListener;
 

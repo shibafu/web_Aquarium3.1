@@ -1,10 +1,9 @@
-package com.TsugaruInfo.formmodel;
+package com.TsugaruInfo.form;
 
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.TsugaruInfo.validation.PasswordConfirm;
 
@@ -16,7 +15,16 @@ import lombok.Data;
  *
  */
 @Data
-public class ImageUploadForm {
+@PasswordConfirm(comparingProperty = "password", property = "passwordConfirm")
+public class RegisterForm {
+	
 	@NotNull
-	private MultipartFile image;
+	private String username;
+	@NotNull
+	@Email
+	private String email;
+	@NotEmpty
+	private String password;
+	@NotEmpty
+	private String passwordConfirm;
 }

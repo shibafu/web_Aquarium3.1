@@ -40,12 +40,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()	
 			.antMatchers("/adminproc/*").authenticated()
 			.and()
+			.csrf()
+			.disable()
 			
 				.formLogin()
 				.loginPage("/login")
 				.defaultSuccessUrl("/top")
 				.failureUrl("/login?error")
 				.permitAll();
+				
 			
 
 			

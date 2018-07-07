@@ -19,7 +19,7 @@ public class APIRecieverController {
 		ModelAndView mv = new ModelAndView("APIRecieverView");
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:8080")
+		WebTarget target = client.target("http://api.localhost:8080")
 			    .path("/WebAquarium3.1/APITransport/APIAccessParametors");
 			 
 		String result = "";

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.TsugaruInfo.formmodel.RegisterForm;
 
 @RequestMapping(value = "/APITransport",produces="application/json;charset=UTF-8")
 @RestController
