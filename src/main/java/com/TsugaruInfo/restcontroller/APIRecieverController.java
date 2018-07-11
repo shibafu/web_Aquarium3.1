@@ -16,7 +16,7 @@ public class APIRecieverController {
 
 	@RequestMapping(value="recieverClient")
 	public ModelAndView recieverClient(Model model) {
-		ModelAndView mv = new ModelAndView("APIRecieverView");
+		ModelAndView mv = new ModelAndView("ViewForAPI/APIRecieverView");
 		
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://api.localhost:8080")

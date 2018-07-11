@@ -16,12 +16,13 @@ public class APIServiceController {
 	 * APIを送信する
 	 * @return
 	 */
-	@RequestMapping(value="APIAccessParametors")
+	@RequestMapping(value="APIAccessParametors", headers = "X-SUBDOMAIN=api")
 	public String APIAccessParametors() {
 		String APIResponseJson = 
-			"{\"user\": [\"AtsuAtsuUdon\", \"user\", true],"
-			+ " \"toot\": [\"アツアツうどんですよろしく！\"]"
-			+ "CWInfo: {CWSituationIs:[true, \"隠したいなんか\"], \"publicToot\", \"something\"]}";
+			"{\"user\": [\"AtsuAtsuUdon\", \"user\", true],\n"
+			+ " \"toot\": [\"アツアツうどんですよろしく！\"],\n"
+			+ "\"CWInfo\": [true, \"隠したいなんか\", \"publicToot\", \"something\"]\n"
+			+ "}";
 		
 		return APIResponseJson;
 	}

@@ -44,4 +44,5 @@ public class LoginUserDetailsServiceImpl implements LoginUserDetailService {
 				return AuthorityUtils.createAuthorityList("ROLE_USER");
 			}
 		}
+		
 	}
