@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 	private UserMasterRepository userMasterRepositry;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	//既登録しているユーザーか、判定結果
 	private final static int REGISTERD_USER_FAILED = 1;
 	private final static int REGISTERD_USER_SUCSEED = 0;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	public void register(UserMaster user) {
 			//パスワードをハッシュ化
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			
+
 			userMasterRepositry.saveAndFlush(user);
 	}
 
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		// TODO 自動生成されたメソッド・スタブ
 		return userMasterRepositry.findByUsernameLike(username);
 	}
-	
+
 	/*
 	 * ユーザー名完全一致検索
 	 * (非 Javadoc)
@@ -54,9 +54,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserMaster searchByUsername(String username) {
 		// TODO 自動生成されたメソッド・スタブ
-		return userMasterRepositry.findByEmail(username);
+		return userMasterRepositry.findByUsername(username);
 	}
-	
+
 	/*
 	 * E-メールを完全一意検索
 	 * (非 Javadoc)
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		// TODO 自動生成されたメソッド・スタブ
 		return userMasterRepositry.findByEmail(email);
 	}
-	
+
 
 
 	/*
@@ -90,11 +90,11 @@ public class UserServiceImpl implements UserService {
 	public String dummyPassword(String rawPassword) {
 		// TODO 自動生成されたメソッド・スタブ
 		StringBuilder sb = new StringBuilder();
-		
+
 		for(int i = 0; i <= rawPassword.length(); i++) {
 			sb.append("*");
 		}
-		
+
 		return sb.toString();
 	}
 }

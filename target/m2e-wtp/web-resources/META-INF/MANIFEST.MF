@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: WebAquarium3.1
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: nozawa
+Built-By: pratula
 Implementation-Vendor-Id: com.TsugaruInfo
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_144
 Implementation-URL: https://platform.spring.io/platform/WebAquarium3.1
  /
 Created-By: Maven Integration for Eclipse

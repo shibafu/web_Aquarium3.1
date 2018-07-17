@@ -1,14 +1,22 @@
 package com.TsugaruInfo.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 
 /**
  * The persistent class for the picture_master database table.
- * 
+ *
  */
 @Data
 @Entity
@@ -22,7 +30,7 @@ public class PictureMaster implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pictid_seq")
     @SequenceGenerator(name = "pictid_seq", sequenceName = "pictid_seq", allocationSize = 1)
 	private Long pictureId;
-	
+
 	@Column(name="upload_UserId")
 	private int uploadUserId;
 
@@ -37,11 +45,11 @@ public class PictureMaster implements Serializable {
 
 	@Column(name="extension")
 	private String extension;
-	
+
 	@Column(name="base64string", length = 900000000)
 	private String base64string;
-	
-	
+
+
 	public PictureMaster() {
 	}
 }
