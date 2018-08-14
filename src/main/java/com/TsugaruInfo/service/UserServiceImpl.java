@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.TsugaruInfo.entity.UserMaster;
 import com.TsugaruInfo.repository.UserMasterRepository;
 
+/**
+ * ユーザー情報をアクセスするクラスの実装
+ * @author pratula
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired

@@ -6,20 +6,26 @@ import org.springframework.context.ApplicationEventPublisherAware;
 
 import com.TsugaruInfo.bean.MyBeanEve;
 
+/**
+ * イベントサービス
+ * イベントパブリッシャーの設定を行い、イベントを実行する
+ * @author pratula
+ *
+ */
 public class MyBeanEventService implements ApplicationEventPublisherAware{
 
 	@Autowired
 	private MyBeanEve beanEve;
 	private ApplicationEventPublisher publisher;
-	
+
 	@Override
 	public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
 		// TODO 自動生成されたメソッド・スタブ
 		this.publisher = applicationEventPublisher;
 		System.out.println("publisher set!!");
-		
+
 	}
-	
+
 	public void doService(String message) {
 		System.out.println("Service Started!");
 		beanEve.addMessage(message);

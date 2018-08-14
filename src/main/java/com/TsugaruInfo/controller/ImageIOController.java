@@ -27,12 +27,18 @@ import com.TsugaruInfo.form.ImageUploadFormApi;
 import com.TsugaruInfo.service.LoginUserDetails;
 import com.TsugaruInfo.service.PictureService;
 
+/**
+ * 画像入出力用アクセスコントローラー
+ * 画像の登録や閲覧を行う
+ * @author pratula
+ *
+ */
 @Controller
 public class ImageIOController {
 
 	@Autowired
 	PictureService pictureService;
-	
+
 	/**
 	 * フォームを初期化
 	 * @return
@@ -45,7 +51,7 @@ public class ImageIOController {
 		*/
 		return imageUploadForm;
 	}
-	
+
 	/**
 	 * フォームを初期化（API用)
 	 * @return
@@ -58,7 +64,7 @@ public class ImageIOController {
 		*/
 		return imageUploadFormApi;
 	}
-	
+
 	/**
 	 * イメージアップロード用ページ
 	 * @return
@@ -68,7 +74,7 @@ public class ImageIOController {
 		ModelAndView mv = new ModelAndView("/ImageView/ImageUpload");
 		return mv;
 	}
-	
+
 	/**
 	 * イメージアップロード処理を行うページ
 	 * @param imageUploadForm
@@ -78,29 +84,29 @@ public class ImageIOController {
 	@RequestMapping(value = "/imageComplete", method = RequestMethod.POST)
 	public ModelAndView imageUploadComplete(ImageUploadForm imageUploadForm,
 			Principal principal) {
-		
+
 		//認証情報を取得する
         Authentication auth = (Authentication)principal;
         LoginUserDetails LoginUser = (LoginUserDetails)auth.getPrincipal();
-		
+
 		//バイナリデータを取得
 		Integer FileSize = (int) (imageUploadForm.getImage().getSize());
 		byte[] imageBinary = new byte[FileSize];
-		
+
 		try {
 			 imageBinary = imageUploadForm.getImage().getBytes();
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		
+
 	    //画像を登録
 		pictureService.addPicture(imageBinary, "seaPictureDorphin", imageUploadForm.getImage().getOriginalFilename(), LoginUser.getUserId());
-		
+
 		ModelAndView mv = new ModelAndView("/ImageView/ImageComplete");
 		return mv;
 	}
-	
+
 	/**
 	 * イメージ閲覧処理
 	 * @param principal
@@ -108,15 +114,15 @@ public class ImageIOController {
 	 */
 	@RequestMapping(value = "/imageView", method = RequestMethod.GET)
 	public ModelAndView imageView(Principal principal) {
-		
+
 		//認証情報を取得する
         Authentication auth = (Authentication)principal;
         LoginUserDetails LoginUser = (LoginUserDetails)auth.getPrincipal();
-		
+
 		//ユーザーの登録画像を取得
 		ModelAndView mv = new ModelAndView("/ImageView/ImageView");
 		List<PictureMaster> UserPicutres = pictureService.readUserPicture(LoginUser.getUserId());
-		
+
 		for(PictureMaster pict:UserPicutres) {
 			//拡張子を取得
 			pict.setExtension(pict.getOriginalName().substring(pict.getOriginalName().length() - 4, pict.getOriginalName().length()));
@@ -125,13 +131,13 @@ public class ImageIOController {
 			//バイナリデータを削除
 			pict.setPictureData(null);
 		}
-		
+
 		mv.addObject("UserName",LoginUser.getUsername());
 		mv.addObject("UserPictures", UserPicutres);
-		
+
 		return mv;
 	}
-	
+
 
 	/**
 	 * APIアップロード用テスト
@@ -142,7 +148,7 @@ public class ImageIOController {
 		ModelAndView mv = new ModelAndView("/ViewForAPI/ImageUploadApi");
 		return mv;
 	}
-	
+
 	/**
 	 * イメージアップロードAPIテスト
 	 * @param imageUploadFormApi
@@ -152,15 +158,15 @@ public class ImageIOController {
 	@RequestMapping(value = "/imageCompleteApi", method = RequestMethod.POST)
 	public ModelAndView imageUploadCompleteApi(ImageUploadFormApi imageUploadFormApi,
 			Principal principal) {
-		
+
 		//認証情報を取得する
         Authentication auth = (Authentication)principal;
         LoginUserDetails LoginUser = (LoginUserDetails)auth.getPrincipal();
-		
+
 		//バイナリデータを取得
 		Integer FileSize = (int) (imageUploadFormApi.getImage().getSize());
 		byte[] imageBinary = new byte[FileSize];
-		
+
 		try {
 			 imageBinary = imageUploadFormApi.getImage().getBytes();
 		} catch (IOException e) {
@@ -170,7 +176,7 @@ public class ImageIOController {
 
 		//Request準備
 		PictureMaster pictureMaster = new PictureMaster();
-		
+
 		pictureMaster.setOriginalName(imageUploadFormApi.getImage().getOriginalFilename());
 		pictureMaster.setPictureName(imageUploadFormApi.getFilename());
 		pictureMaster.setExtension(imageUploadFormApi.getImage().getOriginalFilename()
@@ -178,39 +184,39 @@ public class ImageIOController {
 		pictureMaster.setBase64string(Base64.getEncoder().encodeToString(imageBinary));
 		pictureMaster.setUploadUserId(LoginUser.getUserId());
 	    //APIを呼び出して画像を登録
-		
+
 
 		ObjectMapper mapper = new ObjectMapper();
-		
+
 		Entity<String> requestBody = null;
 		String result = null;
-		
+
 		//ヘッダーを設定する。
 		MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
 		headers.putSingle("X-SUBDOMEIN", "api");
-		
+
 		try {
 			requestBody = Entity.json(mapper.writeValueAsString(pictureMaster));
-			
+
 			//自分サーバーへのAPIにポストリクエストを送る。
 			Client client = ClientBuilder.newClient();
 			WebTarget target = client.target("http://api.localhost:8080")
 				    .path("/WebAquarium3.1/api/picture/addPicture");
-			
+
 			result = target
 					.request()
 					.headers(headers)
 					.post(requestBody, String.class);
-			
-			
+
+
 		} catch (IOException e1) {
 			// TODO 自動生成された catch ブロック
 			e1.printStackTrace();
 		}
-		
-                		
+
+
         //受け取ったJSONをクラスに変換
-		
+
 		System.out.println(result);
 		ModelAndView mv = new ModelAndView("/ImageView/ImageComplete");
 		return mv;

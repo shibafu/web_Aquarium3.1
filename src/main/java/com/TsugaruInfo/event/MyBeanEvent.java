@@ -2,6 +2,12 @@ package com.TsugaruInfo.event;
 
 import org.springframework.context.ApplicationEvent;
 
+/**
+ * アプリケーションイベント
+ * 現在は未使用
+ * @author pratula
+ *
+ */
 public class MyBeanEvent extends ApplicationEvent {
 
 	public MyBeanEvent(Object source) {

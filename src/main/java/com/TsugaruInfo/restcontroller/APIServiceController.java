@@ -7,7 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * APIテスト用アクセスコントローラー
+ * 色んなものを試したりする。
+ * 基本的に簡単なJSONを返却する。
+ * @author pratula
+ *
+ */
 @RequestMapping(value = "/api/APITransport",produces="application/json;charset=UTF-8")
 @RestController
 public class APIServiceController {

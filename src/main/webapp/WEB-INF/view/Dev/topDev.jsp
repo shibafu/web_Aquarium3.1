@@ -22,18 +22,29 @@
 .auto-style4 {
 	font-family: メイリオ;
 }
+
+
+  .ui-menu { width: 150px; }
 </style>
 
 <!-- textllateをインポート -->
 <script src="<c:url value="/resources/js/jquery-3.3.1.js" />" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="<c:url value="/resources/js/jquery.textillate.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.fittext.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.lettering.js" />" type="text/javascript"></script>
 
+<!-- stylesheetをインポート -->
 <link rel = "stylesheet" href="<c:url value="/resources/css/animate.css" />"></link>
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+
 
 <!-- textllateを作動 -->
 <script>
+
+/**
+ * texillateのアニメーション
+ */
 	$(function () {
 		$('.title-animation').textillate({
 
@@ -43,8 +54,21 @@
 			},
 		});
 	})
-</script>
 
+/**
+ *　jQueryの色を変えるテスト
+ */
+ 	$(document).ready(function(){
+ 		$('.attention').css("color", "hotpink")
+
+
+ 		$('.listElement').css("color", "darkblue")
+
+ 		//ボタンをかっこよくする
+ 		$('#menu').menu()
+	});
+
+</script>
 </head>
 
 <body style="background-color: #CCFFFF">
@@ -54,22 +78,21 @@
 <p class="auto-style4">ここはWeb水族館（予定地）です。</p>
 <p class="auto-style4">きれいな魚の写真や海の情報を集めていく予定です。</p>
 <p class="auto-style4">&nbsp;</p>
+
+
+<p class="attention">jqueryのエフェクトテストです</p>
+<p>このタグは反映されません。</p>
 <table style="width: 100%; height: 123px">
-	<tr>
-		<td class="auto-style4" style="width: 300px">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-	</tr>
-	<tr>
-		<td class="auto-style4" style="width: 300px">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-	</tr>
-	<tr>
-		<td class="auto-style4" style="width: 300px">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-		<td class="auto-style4">&nbsp;</td>
-	</tr>
+
+<!-- リストに対してjQueryエフェクトをかける -->
+
+<ul id="menu">
+	<li class="listElement"><a href="#">マイページ</a></li>
+	<li class="listElement"><a href="#">アルバム</a></li>
+	<li class="listElement"><a href="#">アカウント設定</a></li>
+	<li class="listElement"><a href="#">サイトスレッド</a></li>
+</ul>
+
 </table>
 
 </body>

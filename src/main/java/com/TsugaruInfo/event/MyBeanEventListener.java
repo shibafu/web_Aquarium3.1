@@ -2,6 +2,13 @@ package com.TsugaruInfo.event;
 
 import org.springframework.context.ApplicationListener;
 
+/**
+ * アプリケーションイベントリスナー
+ * イベントを呼び出す
+ * 現在は未使用
+ * @author pratula
+ *
+ */
 public class MyBeanEventListener implements ApplicationListener<MyBeanEvent> {
 
 	@Override

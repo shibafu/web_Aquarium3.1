@@ -8,15 +8,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.TsugaruInfo.entity.UserMaster;
 
+/**
+ * APIログイン用のユーザーディテールサービス実装
+ * @author pratula
+ *
+ */
 @Service
 public class APILoginUserDetailServiceImpl implements APILoginUserDetailService {
 
 	@Autowired
 	UserService uService;
+
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,6 +39,7 @@ public class APILoginUserDetailServiceImpl implements APILoginUserDetailService 
 			user = Optional.ofNullable(uService.searchByUsername(username))
 					.orElseThrow(() -> new UsernameNotFoundException("user not found. "));
 		}
+
 
 		//ユーザー情報をSpringSecurityに渡す。
 		return new APILoginUserDetails(user, getAuthorities(user));

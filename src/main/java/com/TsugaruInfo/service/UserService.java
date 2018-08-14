@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.TsugaruInfo.entity.UserMaster;
 
+/**
+ * ユーザー情報をDBからアクセスするサービス
+ * @author pratula
+ *
+ */
 public interface UserService {
 	void register(UserMaster userMaster);
 	List<UserMaster> refferenceByName(String username);

@@ -1,18 +1,14 @@
 package com.TsugaruInfo.config;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * getHeader と addHeaderを追加してサブドメインの操作を加えたサブクラス
+ * getHeader と addHeaderを追加してサブドメインのヘッダーの操作を加えたサブクラス
  * @author nozawa
  *
  */
@@ -20,26 +16,26 @@ public class SubDomainHttpServletRequestWrapper extends HttpServletRequestWrappe
 
 	//ヘッダー情報はこのマップにコピーされる
 	private Map<String, String> headers = new HashMap<String, String>();
-	
+
 	public SubDomainHttpServletRequestWrapper(HttpServletRequest request) {
 		super(request);
-		
+
 		//リクエストヘッダーを取得
 		Enumeration<String> headers_head = request.getHeaderNames();
-				
+
 		//ヘッダー名を取得
 				while(headers_head.hasMoreElements()){
 					String header = headers_head.nextElement();
 					Enumeration<String> values = request.getHeaders(header);
 		//ヘッダー値をセット
-				while(values.hasMoreElements()) { 
+				while(values.hasMoreElements()) {
 					String value = values.nextElement();
 					headers.put(header, value);
 					}
 				}
 	}
 
-	
+
 	/**
 	 * Header追加
 	 * @param name
@@ -48,7 +44,7 @@ public class SubDomainHttpServletRequestWrapper extends HttpServletRequestWrappe
 	public void addHeader(String name, String value){
 		headers.put(name, value);
 	}
-	
+
 	/**
 	 * Header取得
 	 */
@@ -56,8 +52,8 @@ public class SubDomainHttpServletRequestWrapper extends HttpServletRequestWrappe
 		if(headers.containsKey(name)) {
 			return headers.get(name);
 		}
-		
+
 		return ((HttpServletRequest)getRequest()).getHeader(name);
-		
+
 	}
 }

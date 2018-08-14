@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.TsugaruInfo.service.LoginUserDetailService;
 
 /**
- * フォーム認証用セキュリティ
+ * フォーム認証用セキュリティコンフィグ
  * @author pratula
  *
  */
@@ -60,7 +60,8 @@ public class UIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	/**
-	 *
+	 * AuthenticationProviderとかの設定。
+	 * UserDetailsService、passwordEncoderをセットする
 	 */
 	@Autowired
 	void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {

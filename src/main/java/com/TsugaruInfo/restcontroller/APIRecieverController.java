@@ -10,6 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * APIテストようアクセスコントローラー
+ * jerseyのテストとかに
+ * @author pratula
+ *
+ */
 @RequestMapping(value = "/api/APITransport")
 @Controller
 public class APIRecieverController {
@@ -21,6 +27,9 @@ public class APIRecieverController {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://api.localhost:8080")
 			    .path("/WebAquarium3.1/api/APITransport/APIAccessParametors");
+
+//		HttpAuthenticationFeature feature = HttpAuthenticationFeature.universalBuilder()
+//				.credentialsForDigest(username, password)
 
 		String result = "";
 			try {

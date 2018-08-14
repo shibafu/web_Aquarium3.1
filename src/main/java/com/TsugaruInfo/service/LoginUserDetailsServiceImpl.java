@@ -13,6 +13,13 @@ import org.springframework.stereotype.Service;
 
 import com.TsugaruInfo.entity.UserMaster;
 
+/**
+ * フォーム認証用LoginUserDetails実装
+ * ユーザーネームとEmailで名前を検索する。
+ * 見つかった場合、加えてユーザー情報を返却する
+ * @author pratula
+ *
+ */
 @Primary
 @Service
 public class LoginUserDetailsServiceImpl implements LoginUserDetailService {

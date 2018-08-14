@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.TsugaruInfo.entity.PictureMaster;
 
+/**
+ * 画像の読み書き用サービス
+ * @author pratula
+ *
+ */
 public interface PictureService {
 	public Long addPicture(PictureMaster pictureMaster);
 	public Long addPicture(byte[] picturedata, String pictureName,String originalName, Integer uploadUserId);

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * APIの通信用レスポンス
+ * 画像用APIコントローラーのレスポンスボディ
  * @author nozawa
  *
  */

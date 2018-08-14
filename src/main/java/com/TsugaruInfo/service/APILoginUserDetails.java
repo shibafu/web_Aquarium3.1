@@ -7,6 +7,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.TsugaruInfo.entity.UserMaster;
 
+/**
+ * API用のloginUserDetails
+ * @author pratula
+ *
+ */
 public class APILoginUserDetails  implements UserDetails  {
 
 	private final UserMaster user;

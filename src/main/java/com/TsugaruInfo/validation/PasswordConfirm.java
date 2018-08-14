@@ -8,6 +8,12 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+/**
+ * パスワード相関確認用のアノテーション
+ * インターフェース部分
+ * @author pratula
+ *
+ */
 @Documented
 @Constraint(validatedBy= {PasswordConfirmValidationImpl.class})
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
@@ -16,10 +22,10 @@ public @interface PasswordConfirm{
     String message() default "com.TsugaruInfo.Validation.PasswordConfirmValidationImpl.message"; //エラーメッセージ
     Class<?>[] groups() default {};            //引数に使う肩を宣言
     Class<? extends Payload>[] payload() default {}; //Payload荷重
-    
+
     String property();
     String comparingProperty();
-    
+
     @Documented
     @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
     @Retention(RetentionPolicy.RUNTIME)

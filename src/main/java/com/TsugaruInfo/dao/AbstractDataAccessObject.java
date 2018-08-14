@@ -2,6 +2,12 @@ package com.TsugaruInfo.dao;
 
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+/**
+ * Dao用の抽象クラス
+ * @author pratula
+ *
+ * @param <T>
+ */
 public class AbstractDataAccessObject<T> {
 
 	/**

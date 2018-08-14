@@ -11,10 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.TsugaruInfo.authparts.APIAccessDeniedHandler;
+import com.TsugaruInfo.authparts.APISimpleAuthenticationEntryPoint;
 import com.TsugaruInfo.service.APILoginUserDetailService;
 
 /**
- * API用セキュリティ
+ * API用セキュリティコンフィグ
  * @author pratula
  *
  */
@@ -31,6 +33,7 @@ public class APIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * Web全般のセキュリティ
+	 * リソースを許可
 	 */
 	@Override
 	public void configure(WebSecurity web) {
@@ -44,18 +47,41 @@ public class APIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// セキュリティで管理されたページの設定
-		http.antMatcher("/api/**");
+		http.antMatcher("/api/**")
+		.exceptionHandling()
+		.authenticationEntryPoint(authenticationEntryPoint()) // APIがアクセス拒否された時の例外を返す
+		.accessDeniedHandler(accessDeniedHandler());;
 
 		http.authorizeRequests().anyRequest().authenticated(); // 適用された全リクエストに対して認証を要求
+
+
 		http.httpBasic(); // Basic認証
 		http.csrf().disable();
 	}
 
 	/**
-	 *
+	 * AuthenticationProviderとかの設定。
+	 * UserDetailsService、passwordEncoderをセットする
 	 */
 	@Autowired
 	void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(lService).passwordEncoder(passwordEncoder);
+	}
+
+	/**
+	 * 未認証エラーを返す。
+	 * 詳細は実装を参照
+	 * @return
+	 */
+	private APISimpleAuthenticationEntryPoint authenticationEntryPoint() {
+		return new APISimpleAuthenticationEntryPoint();
+	}
+	/**
+	 * 認証済みでアクセス権限が足りないエラーを返す。
+	 * 詳細は実装を参照
+	 * @return
+	 */
+	private APIAccessDeniedHandler accessDeniedHandler() {
+		return new APIAccessDeniedHandler();
 	}
 }

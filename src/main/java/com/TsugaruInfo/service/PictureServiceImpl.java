@@ -1,7 +1,7 @@
 package com.TsugaruInfo.service;
 
-import java.util.List;
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,12 +9,17 @@ import org.springframework.stereotype.Service;
 import com.TsugaruInfo.entity.PictureMaster;
 import com.TsugaruInfo.repository.PictureMasterRepository;
 
+/**
+ * 画像の読み書き用サービス実装
+ * @author pratula
+ *
+ */
 @Service
 public  class PictureServiceImpl implements PictureService {
 
 	@Autowired
 	PictureMasterRepository pRepository;
-	
+
 	/**
 	 * 画像を登録する。
 	 */
@@ -22,17 +27,17 @@ public  class PictureServiceImpl implements PictureService {
 	public Long addPicture(byte[] picturedata, String pictureName, String originalName, Integer uploadUserId) {
 		// TODO 自動生成されたメソッド・スタブ
 		PictureMaster input = new PictureMaster();
-		
+
 		input.setPictureData(picturedata);
 		input.setPictureName(pictureName);
 		input.setOriginalName(originalName);
 		input.setUploadUserId(uploadUserId);
-		
+
 		pRepository.saveAndFlush(input);
-		
+
 		return input.getPictureId();
 	}
-	
+
 	/**
 	 * 画像を登録する(API)
 	 */
@@ -40,9 +45,9 @@ public  class PictureServiceImpl implements PictureService {
 	public Long addPicture(PictureMaster pictureMaster) {
 		// TODO 自動生成されたメソッド・スタブ
 		pictureMaster.setPictureData(Base64.getDecoder().decode(pictureMaster.getBase64string()));
-		
+
 		pRepository.saveAndFlush(pictureMaster);
-		
+
 		return pictureMaster.getPictureId();
 	}
 
@@ -51,11 +56,11 @@ public  class PictureServiceImpl implements PictureService {
 	 */
 	@Override
 	public List<PictureMaster> readUserPicture(Integer uploadUserId) {
-		
+
 	List<PictureMaster> searchResult = pRepository.findByUploadUserId(uploadUserId);
-	
+
 	return searchResult;
-	
+
 	}
 
 }
