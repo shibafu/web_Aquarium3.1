@@ -27,15 +27,35 @@
   .ui-menu { width: 150px; }
 </style>
 
+<header>
+メインメニュー   <!--ヘッダー用テキスト-->
+
+<table style="width: 100%; height: 123px">
+
+<!-- リストに対してjQueryエフェクトをかける -->
+
+<ul id="menu">
+	<li class="listElement"><a href="#">マイページ</a></li>
+	<li class="listElement"><a href="#">アルバム</a></li>
+	<li class="listElement"><a href="#">アカウント設定</a></li>
+	<li class="listElement"><a href="#">サイトスレッド</a></li>
+</ul>
+
+</table>
+</header>
+
 <!-- textllateをインポート -->
 <script src="<c:url value="/resources/js/jquery-3.3.1.js" />" type="text/javascript"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.textillate.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.fittext.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.lettering.js" />" type="text/javascript"></script>
 
+<!-- 開発jsをインポート -->
+<script src="<c:url value="/resources/js/webAqua.js" />" type="text/javascript"></script>
+
 <!-- stylesheetをインポート -->
-<link rel = "stylesheet" href="<c:url value="/resources/css/animate.css" />"></link>
+<link rel = "stylesheet" href="<c:url value="/resources/css/animate.css" />">
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
 
@@ -66,6 +86,10 @@
 
  		//ボタンをかっこよくする
  		$('#menu').menu()
+
+ 		$('.WarnButton').click(function() {
+ 			alertWindow("テストメッセージです＞＜");
+ 		});
 	});
 
 </script>
@@ -82,18 +106,9 @@
 
 <p class="attention">jqueryのエフェクトテストです</p>
 <p>このタグは反映されません。</p>
-<table style="width: 100%; height: 123px">
 
-<!-- リストに対してjQueryエフェクトをかける -->
 
-<ul id="menu">
-	<li class="listElement"><a href="#">マイページ</a></li>
-	<li class="listElement"><a href="#">アルバム</a></li>
-	<li class="listElement"><a href="#">アカウント設定</a></li>
-	<li class="listElement"><a href="#">サイトスレッド</a></li>
-</ul>
-
-</table>
+<button class="WarnButton" name="alertButton">ウィンドウを表示します</button>
 
 </body>
 
