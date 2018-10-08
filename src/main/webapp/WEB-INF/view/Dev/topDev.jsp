@@ -5,6 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <head>
+
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>Web水族館プロトプログラム</title>
@@ -23,29 +24,11 @@
 	font-family: メイリオ;
 }
 
-
   .ui-menu { width: 150px; }
 </style>
 
-<header>
-メインメニュー   <!--ヘッダー用テキスト-->
-
-<table style="width: 100%; height: 123px">
-
-<!-- リストに対してjQueryエフェクトをかける -->
-
-<ul id="menu">
-	<li class="listElement"><a href="#">マイページ</a></li>
-	<li class="listElement"><a href="#">アルバム</a></li>
-	<li class="listElement"><a href="#">アカウント設定</a></li>
-	<li class="listElement"><a href="#">サイトスレッド</a></li>
-</ul>
-
-</table>
-</header>
-
 <!-- textllateをインポート -->
-<script src="<c:url value="/resources/js/jquery-3.3.1.js" />" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/jquery.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.textillate.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.fittext.js" />" type="text/javascript"></script>
@@ -56,46 +39,54 @@
 
 <!-- stylesheetをインポート -->
 <link rel = "stylesheet" href="<c:url value="/resources/css/animate.css" />">
- <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.min.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-uistructure.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-uistructure.min.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.min.css" />">
 
-
+<c:url var="common_header_url" value="/resources/common/header.html" />
 <!-- textllateを作動 -->
-<script>
-
+<script type="text/javascript">
 /**
- * texillateのアニメーション
+ * 共通ヘッダーをインポート
  */
-	$(function () {
-		$('.title-animation').textillate({
+	$(function(){
+		$("header").load("${common_header_url}");
+});
 
-			in: {
-				effect: 'rollIn',	// エフェクトの指定
-				callback: function () {}	// コールバック関数
-			},
-		});
-	})
 
 /**
  *　jQueryの色を変えるテスト
  */
- 	$(document).ready(function(){
- 		$('.attention').css("color", "hotpink")
+ 	$(function(){
+ 		$('.attention').css("color", "hotpink");
 
-
- 		$('.listElement').css("color", "darkblue")
-
- 		//ボタンをかっこよくする
- 		$('#menu').menu()
-
- 		$('.WarnButton').click(function() {
- 			alertWindow("テストメッセージです＞＜");
+ 		  $('#ukon').button({
+ 			    icons: {
+ 			      primary: 'ui-icon-scissors'
+ 			    },
+ 			    text: false
  		});
+
 	});
 
 </script>
-</head>
 
+<style type="text/css">
+.ui-icon {
+    zoom: 150%;
+    -moz-transform: scale(1.50);
+    -webkit-zoom: 1.50;
+    -ms-zoom: 1.50;
+}
+</style>
+</head>
 <body style="background-color: #CCFFFF">
+
+<header>
+</header>
 
 <h1 class="title-animation">Welcome</h1>
 <p class="auto-style3">ログイン　管理コンソール　</p>
@@ -109,6 +100,10 @@
 
 
 <button class="WarnButton" name="alertButton">ウィンドウを表示します</button>
+
+
+	<button id="ukon" name="Button">うこん</button>
+
 
 </body>
 
