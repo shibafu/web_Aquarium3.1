@@ -2,7 +2,6 @@ package com.TsugaruInfo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.TsugaruInfo.authparts.APIAccessDeniedHandler;
 import com.TsugaruInfo.authparts.APISimpleAuthenticationEntryPoint;
-import com.TsugaruInfo.service.APILoginUserDetailService;
+import com.TsugaruInfo.service.LoginUserDetailService;
 
 /**
  * API用セキュリティコンフィグ
@@ -22,11 +21,11 @@ import com.TsugaruInfo.service.APILoginUserDetailService;
  */
 @EnableWebSecurity
 @Configuration
-@Order(Ordered.HIGHEST_PRECEDENCE)
+@Order(1)
 public class APIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	APILoginUserDetailService lService;
+	LoginUserDetailService lService;
 
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;

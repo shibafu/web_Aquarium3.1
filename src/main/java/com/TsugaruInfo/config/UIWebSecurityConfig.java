@@ -2,6 +2,7 @@ package com.TsugaruInfo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,6 +19,7 @@ import com.TsugaruInfo.service.LoginUserDetailService;
  */
 @EnableWebSecurity
 @Configuration
+@Order(2)
 public class UIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -49,7 +51,8 @@ public class UIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.disable()
 
 				.formLogin()
-				.loginPage("/login*")
+				.loginPage("/login")
+				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/top")
 				.failureUrl("/login?error")
 				.permitAll();

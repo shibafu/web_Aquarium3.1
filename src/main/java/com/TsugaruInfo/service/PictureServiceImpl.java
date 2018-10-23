@@ -1,6 +1,7 @@
 package com.TsugaruInfo.service;
 
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public  class PictureServiceImpl implements PictureService {
 	 * 画像を登録する。
 	 */
 	@Override
-	public Long addPicture(byte[] picturedata, String pictureName, String originalName, Integer uploadUserId) {
+	public Long addPicture(byte[] picturedata, String pictureName, String originalName, Integer uploadUserId, Date uploadDate) {
 		// TODO 自動生成されたメソッド・スタブ
 		PictureMaster input = new PictureMaster();
 
@@ -32,6 +33,7 @@ public  class PictureServiceImpl implements PictureService {
 		input.setPictureName(pictureName);
 		input.setOriginalName(originalName);
 		input.setUploadUserId(uploadUserId);
+		input.setUploadDate(uploadDate);
 
 		pRepository.saveAndFlush(input);
 
@@ -58,6 +60,18 @@ public  class PictureServiceImpl implements PictureService {
 	public List<PictureMaster> readUserPicture(Integer uploadUserId) {
 
 	List<PictureMaster> searchResult = pRepository.findByUploadUserId(uploadUserId);
+
+	return searchResult;
+
+	}
+
+	/**
+	 * 直近9件の登録画像を返却する
+	 */
+	@Override
+	public List<PictureMaster> lastAlbumUserPicture(Integer uploadUserId) {
+
+	List<PictureMaster> searchResult = pRepository.findLastUploadedPicture(uploadUserId);
 
 	return searchResult;
 

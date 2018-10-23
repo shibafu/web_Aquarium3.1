@@ -16,7 +16,7 @@ public class ImageUploadFormApi {
 
 	@NotNull
 	private MultipartFile image;
-
+	@NotNull
 	private String filename;
 
 }

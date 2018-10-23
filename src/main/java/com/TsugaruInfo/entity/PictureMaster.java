@@ -1,6 +1,7 @@
 package com.TsugaruInfo.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +34,9 @@ public class PictureMaster implements Serializable {
 
 	@Column(name="upload_UserId")
 	private int uploadUserId;
+
+	@Column(name="upload_date")
+	private Date uploadDate;
 
 	@Column(name="picture_name")
 	private String pictureName;

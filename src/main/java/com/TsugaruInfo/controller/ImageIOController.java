@@ -3,6 +3,7 @@ package com.TsugaruInfo.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -101,7 +102,7 @@ public class ImageIOController {
 		}
 
 	    //画像を登録
-		pictureService.addPicture(imageBinary, "seaPictureDorphin", imageUploadForm.getImage().getOriginalFilename(), LoginUser.getUserId());
+		pictureService.addPicture(imageBinary, imageUploadForm.getFilename(), imageUploadForm.getImage().getOriginalFilename(), LoginUser.getUserId(), new Date());
 
 		ModelAndView mv = new ModelAndView("/ImageView/ImageComplete");
 		return mv;
