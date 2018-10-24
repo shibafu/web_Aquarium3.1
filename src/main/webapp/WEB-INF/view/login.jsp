@@ -93,7 +93,8 @@
 </c:if>
 <br/>
 <div class="Button">
-<h3 class="auto-style1">ユーザー名がある場合はログインして下さい</h>
+<h3 class="auto-style1">ユーザー名がある場合はログインして下さい</h3>
+</div>
 
 
 <c:url var="loginUrl" value="/login" />

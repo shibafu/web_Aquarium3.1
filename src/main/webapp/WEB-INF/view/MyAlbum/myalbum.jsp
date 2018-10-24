@@ -63,12 +63,11 @@
 <header></header>
 
 <p>マイアルバム</p>
-<img alt="" src="" /><img alt="" src="" /><img alt="" src="" /><p>&nbsp;</p>
-<p>&nbsp;</p>
 
 <!-- 画像表示ループ -->
 <c:forEach var="picture" items="${albumPicutresList}" varStatus="status">
 
+<div></div>
 	<p>${picture.pictureName}</p>
 	<img src="data:image/${picture.extension};base64,${picture.base64string}">
 

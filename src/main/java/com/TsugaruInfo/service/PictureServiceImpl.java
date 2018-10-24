@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.TsugaruInfo.dao.MyAlbumDao;
 import com.TsugaruInfo.entity.PictureMaster;
 import com.TsugaruInfo.repository.PictureMasterRepository;
 
@@ -20,6 +21,9 @@ public  class PictureServiceImpl implements PictureService {
 
 	@Autowired
 	PictureMasterRepository pRepository;
+
+	@Autowired
+	MyAlbumDao albumDao;
 
 	/**
 	 * 画像を登録する。
@@ -71,7 +75,7 @@ public  class PictureServiceImpl implements PictureService {
 	@Override
 	public List<PictureMaster> lastAlbumUserPicture(Integer uploadUserId) {
 
-	List<PictureMaster> searchResult = pRepository.findLastUploadedPicture(uploadUserId);
+	List<PictureMaster> searchResult = albumDao.findLastUploadedPicture(uploadUserId);
 
 	return searchResult;
 

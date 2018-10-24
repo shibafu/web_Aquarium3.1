@@ -10,17 +10,18 @@
 <c:url var="imageUpload" value="/imageUpload" />
 <c:url var="login" value="/login" />
 <c:url var="register" value="/register" />
+<c:url var="MyAlbum" value="/MyAlbum" />
 
 	<ul id="menu">
-		<li><a href="#">メニュー</a>
+		<li><a href="#">サイトメニュー</a>
 			<ul class="child">
-				<li><a href="">マイページ</a></li>
-				<li><a href="">アルバム</a></li>
-				<li><a href="${imageUpload}">画像追加</a></li>
-				<li><a href="${login}">ログイン</a></li>
-				<li><a href="${register}">ユーザー登録</a></li>
+				<li><a href="">マイページ　　</a></li>
+				<li><a href="${MyAlbum}">アルバム　　　</a></li>
+				<li><a href="${imageUpload}">画像追加　　　</a></li>
+				<li><a href="${login}">ログイン　　　</a></li>
+				<li><a href="${register}">ユーザー登録　</a></li>
 				<li><a href="">サイトスレッド</a></li>
-				<li><a href="">管理メニュー</a></li>
+				<li><a href="">管理メニュー　</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -58,7 +59,7 @@
  		//メニューをかっこよくする
  		$('#menu').menu({
  			position: { my: "left top", at: "left top+26" }
- 				  });
+		  });
 
 		//マウスホバー実装
 

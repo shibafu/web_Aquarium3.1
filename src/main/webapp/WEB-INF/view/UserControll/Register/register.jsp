@@ -4,19 +4,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-
-<%@ page import="com.TsugaruInfo.*" %>
 <head>
+
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>ユーザー登録フォーム&nbsp; 名前を決めてユーザー登録をしよう</title>
-<style type="text/css">
-.auto-style1 {
-	text-align: center;
-}
-</style>
-</head>
-</head>
+<title>Web水族館プロトプログラム</title>
 <style type="text/css">
 .title-animation {
 	font-size: 70pt;
@@ -54,9 +46,7 @@
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.css" />">
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.min.css" />">
 
-<c:url var="common_header_url" value="/common/header" />
-
-<!-- textllateを作動 -->
+<c:url var="common_header_url" value="/resources/common/header.html" />
 <!-- textllateを作動 -->
 <script type="text/javascript">
 /**
@@ -65,32 +55,63 @@
 	$(function(){
 		$("header").load("${common_header_url}");
 });
+
+
+/**
+ *　jQueryの色を変えるテスト
+ */
+ 	$(function(){
+ 		$('.attention').css("color", "hotpink");
+
+ 		  $('#ukon').button({
+ 			    icons: {
+ 			      primary: 'ui-icon-scissors'
+ 			    },
+ 			    text: false
+ 		});
+
+ 		  $('.Button').button();
+
+	});
+
 </script>
-<body>
-<header></header>
+
+<style type="text/css">
+.ui-icon {
+    zoom: 150%;
+    -moz-transform: scale(1.50);
+    -webkit-zoom: 1.50;
+    -ms-zoom: 1.50;
+}
+</style>
+</head>
+<body style="background-color: #CCFFFF">
+
+<header>
+</header>
 
 <spring:url value="/register/confirm" var="action" />
 <form:form modelAttribute="RegisterForm" action="${action}">
 
-	<div class="auto-style1">
+	<div class="auto-style1 Button">
 		ユーザー登録フォーム<br />
 		<br />
 		名前を決めてユーザー登録をしよう！<br />
 		<br />
 		<br />
 		ユーザー名<br />
-		<form:input path="username" style="width: 210px" />
+		<form:input path="username" style="width: 210px" class="Button"/>
 		<br />
 		E-mail<br />
-		<form:input path="email" style="width: 210px" />
+		<form:input path="email" style="width: 210px"  class="Button"/>
 		<br />
 		パスワード<br />
-		<form:password path="password" style="width: 210px" />
+		<form:password path="password" style="width: 210px"  class="Button"/>
 		<br />
 		パスワード（確認）<br />
-		<form:password path="passwordConfirm" style="width: 210px" /><br />
+		<form:password path="passwordConfirm" style="width: 210px"  class="Button"/><br />
 		<br />
-		<input type="submit" value="登録！" />
+		<input type="submit" value="登録！"  class="Button"/>
 	</div>
 </form:form>
 
