@@ -105,6 +105,8 @@
 	<input name="username" type="text" class="auto-style1 Button" /><br/>
 	<p class="auto-style1 Button">パスワード</p>
 	<input name="password" type="password" class="auto-style1 Button" /><br/>
+	<p class="auto-style1 Button">RememberMe！</p>
+	<input name="remember-me" type="checkbox" class="auto-style1 Button" value="yes" /><br/>
 
 <input name="Submit" type="submit" value="submit" class="auto-style1 Button" /><br/>
 </div>

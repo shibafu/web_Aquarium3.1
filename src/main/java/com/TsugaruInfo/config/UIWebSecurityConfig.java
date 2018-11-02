@@ -55,7 +55,10 @@ public class UIWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/top")
 				.failureUrl("/login?error")
-				.permitAll();
+				.permitAll()
+				.and()
+				.rememberMe() //RemenberMe認証を行う。現状は１週間有効
+				.tokenValiditySeconds(604800);
 
 		// ログアウト設定
 		http.logout().logoutUrl("auth/logout").permitAll();
