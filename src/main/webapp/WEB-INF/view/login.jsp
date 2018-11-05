@@ -66,8 +66,10 @@
  			    text: false
  		});
 
-
+	/*ButtonをUI化*/
  		  $('.Button').button();
+	/*CheckBoxをUI化*/
+ 		  $('#CheckBox').buttonset();
 
 	});
 
@@ -91,24 +93,21 @@
 		<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
 	</span>
 </c:if>
-<br/>
-<div class="Button">
-<h3 class="auto-style1">ユーザー名がある場合はログインして下さい</h3>
-</div>
-
 
 <c:url var="loginUrl" value="/login" />
 <form:form action="${loginUrl}" >
 
 <div class="Button">
+<p class="auto-style1">ユーザー名がある場合はログインして下さい</p>
 	<p class="auto-style1 Button">ユーザー名</p>
 	<input name="username" type="text" class="auto-style1 Button" /><br/>
 	<p class="auto-style1 Button">パスワード</p>
 	<input name="password" type="password" class="auto-style1 Button" /><br/>
-	<p class="auto-style1 Button">RememberMe！</p>
-	<input name="remember-me" type="checkbox" class="auto-style1 Button" value="yes" /><br/>
+	<div id="CheckBox">
+	<input type="checkbox" id="remember-check"name="remember-me"  checked="checked" /><label for="remember-check">ログイン状態を記録する</label><br/>
+	</div>
 
-<input name="Submit" type="submit" value="submit" class="auto-style1 Button" /><br/>
+<input name="Submit" type="submit" value="ログイン" class="auto-style1 Button" /><br/>
 </div>
 
 </form:form>
