@@ -56,9 +56,37 @@
 /**
  * 共通ヘッダーをインポート
  */
+ var fotorama
 	$(function(){
 		$("header").load("${common_header_url}");
 });
+	/**
+	 * fotoramaオブジェクトを取得
+	 */
+	 $(function () {
+		    // 1. Initialize fotorama manually.
+		    var $fotoramaDiv = $('#fotorama').fotorama();
+		    // 2. Get the API object.
+		    fotorama = $fotoramaDiv.data('fotorama');
+
+		    // 3. Inspect it in console.
+		    //console.log(fotorama.activeFrame.id);
+		  });
+	/**
+	 * 画像編集ボタンを押下
+	*/
+	$(function(){
+		//ボタン押下イベント
+		$("#picutureInfoEdit").click(function() {
+		  console.log("選択した画像のIDは" + fotorama.activeFrame.id + "です");
+		});
+	});
+	/**
+	 * ボタンを装飾
+	 */
+	 $(function(){
+	  		$('.Button').button();
+	 });
 </script>
 </head>
 <body style="background-color: #CCFFFF">
@@ -66,18 +94,22 @@
 <header></header>
 
 <p>マイアルバム</p>
+<button id="picutureInfoEdit" class="Button">画像の編集</button>
 <!-- fotoramaプラグインを導入　サムネイルスライドショーにする。 -->
 <div style="width:800; height:600;" >
-<div class="fotorama"
-     data-nav="thumbs" data-fit="cover" >
+<div id="fotorama" class="fotorama"
+     data-nav="thumbs" data-fit="cover" data-auto="false">
 <!-- 画像表示ループ -->
 <c:forEach var="picture" items="${albumPicutresList}" varStatus="status">
 
-		<img src="data:image/${picture.extension};base64,${picture.base64string}"data-caption="${picture.pictureName}"  data-fit="contain"/>
+	<img id="${picture.pictureId}" src="data:image/${picture.extension};base64,${picture.base64string}"data-caption="${picture.pictureName}"  data-fit="contain"/>
 </c:forEach>
 </div>
 </div>
-
+<br/>
+<br/>
+<br/>
+<br/>
 </body>
 
 </html>
