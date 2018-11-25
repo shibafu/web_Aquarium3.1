@@ -46,7 +46,7 @@
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.css" />">
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.min.css" />">
 
-<c:url var="common_header_url" value="/resources/common/header.html" />
+<c:url var="common_header_url" value="/common/header" />
 <!-- textllateを作動 -->
 <script type="text/javascript">
 /**

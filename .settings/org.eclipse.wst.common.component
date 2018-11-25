@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/WebAquarium3-0.0.1-SNAPSHOT"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/resources/css/fotorama"/>
         <property name="java-output-path" value="/WebAquarium3.1/target/classes"/>
         <property name="context-root" value="WebAquarium3.1"/>
     </wb-module>

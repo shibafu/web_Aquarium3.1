@@ -88,6 +88,9 @@
 
 <body style="background-color: #CCFFFF">
 
+<header>
+</header>
+
 <div class="Button">
 <form:form action="imageComplete"  method="post"
 modelAttribute="ImageUploadForm" enctype="multipart/form-data">

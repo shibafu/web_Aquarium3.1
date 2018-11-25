@@ -33,6 +33,7 @@
 <script src="<c:url value="/resources/js/jquery.textillate.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.fittext.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/jquery.lettering.js" />" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/fotorama/fotorama.js" />"></script>
 
 <!-- 開発jsをインポート -->
 <script src="<c:url value="/resources/js/webAqua.js" />" type="text/javascript"></script>
@@ -45,6 +46,8 @@
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-uistructure.min.css" />">
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.css" />">
 <link rel = "stylesheet" href="<c:url value="/resources/css/jquery-ui.theme.min.css" />">
+<link rel = "stylesheet" href="<c:url value="/resources/css/fotorama/fotorama.css" />" >
+
 
 <c:url var="common_header_url" value="/common/header" />
 
@@ -63,18 +66,17 @@
 <header></header>
 
 <p>マイアルバム</p>
-
+<!-- fotoramaプラグインを導入　サムネイルスライドショーにする。 -->
+<div style="width:800; height:600;" >
+<div class="fotorama"
+     data-nav="thumbs" data-fit="cover" >
 <!-- 画像表示ループ -->
 <c:forEach var="picture" items="${albumPicutresList}" varStatus="status">
 
-<div></div>
-	<p>${picture.pictureName}</p>
-	<img src="data:image/${picture.extension};base64,${picture.base64string}">
-
+		<img src="data:image/${picture.extension};base64,${picture.base64string}"data-caption="${picture.pictureName}"  data-fit="contain"/>
 </c:forEach>
-
-	<input name="NextPicture" type="button" value="次の画像を読み込む" />
-<p><input name="トップページへ" type="button" value="次の画像を読み込む" /></p>
+</div>
+</div>
 
 </body>
 
