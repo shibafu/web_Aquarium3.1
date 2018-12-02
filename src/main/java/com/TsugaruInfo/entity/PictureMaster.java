@@ -50,7 +50,7 @@ public class PictureMaster implements Serializable {
 	@Column(name="extension")
 	private String extension;
 
-	@Column(name="base64string", length = 900000000)
+	@Column(name="base64string", length = 10485760)
 	private String base64string;
 
 

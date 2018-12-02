@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
  http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -7,14 +7,13 @@
   <artifactId>WebAquarium3.1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  
-    <parent>
-        <groupId>io.spring.platform</groupId>
-        <artifactId>platform-bom</artifactId>
-        <version>Brussels-SR7</version>
-        <relativePath/>
-    </parent>
-  
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-dependencies</artifactId>
+    <version>2.1.1.RELEASE</version>
+  </parent>
+
   <properties>
 
 		<!-- Generic properties -->
@@ -24,7 +23,7 @@
 
 	</properties>
 	<dependencies>
-	
+
 		<!-- Spring and Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -34,13 +33,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
-	
+
 		<!-- SpringMVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
-			
+
 		<!-- JSP Javaervlet-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -52,8 +51,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
+			<groupId>org.eclipse.jetty.orbit</groupId>
+			<artifactId>javax.servlet.jsp</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
@@ -78,12 +77,17 @@
 
 		<!-- Hibernate -->
 		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-		
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 		<!-- jdbc -->
@@ -91,31 +95,31 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
-		
+
 		<!-- h2 database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-		
+
 		<!-- postgresql database -->
 		<dependency>
    			<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
     	</dependency>
-    	
+
 		<!-- Spring Data JPA -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
-		
+
 		<!-- Spring ORM -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
-		
+
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -126,8 +130,8 @@
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -141,8 +145,8 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-		
-		
+
+
 		<!-- jersey -->
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
@@ -152,18 +156,18 @@
   			<groupId>org.glassfish.jersey.media</groupId>
   			<artifactId>jersey-media-jaxb</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish.jersey.ext</groupId>
-			<artifactId>jersey-spring3</artifactId>
+			<artifactId>jersey-spring4</artifactId>
 		</dependency>
-		
+
 		<!-- Jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-		
+
 		<!-- Test Artifacts -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -177,13 +181,13 @@
 		</dependency>
 
 	<!-- Apache Tomcat -->
-	<dependency>
-	    <groupId>commons-logging</groupId>
-	    <artifactId>commons-logging</artifactId>
-	</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
 
-	</dependencies>	
-	
+	</dependencies>
+
 <build>
     <plugins>
       <plugin>
@@ -193,7 +197,7 @@
             <target>1.8</target>
           </configuration>
       </plugin>
-      
+
       <!-- plugin>
       	<groupId>org.codehaus.mojo</groupId>
       	<artifactId>exec-maven-plugin</artifactId>

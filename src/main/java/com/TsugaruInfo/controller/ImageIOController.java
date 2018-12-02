@@ -13,7 +13,6 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -27,6 +26,7 @@ import com.TsugaruInfo.form.ImageUploadForm;
 import com.TsugaruInfo.form.ImageUploadFormApi;
 import com.TsugaruInfo.service.LoginUserDetails;
 import com.TsugaruInfo.service.PictureService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 画像入出力用アクセスコントローラー
